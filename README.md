@@ -1,5 +1,4 @@
-广告数据统计和排序
+竞品投放测试
 ===
 
-[广告统计数据API](README.statistic.md)
-[广告排序API](README.rank.md)
+[竞品测试API](https://github.com/cloudadrd/Document/blob/master/competitor_test.md)
