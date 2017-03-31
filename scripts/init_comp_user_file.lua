@@ -30,10 +30,10 @@ ngx.timer.at(0, function(premature)
     ngx.thread.spawn(function()
         local comp_file_table = {}
         local counter = -1
-        local update_freq = 600
-        local sleep_time = 0.2
-        local max_queue_len = 10000
-        local root_folder = '/Users/xdyan/competitor_user_id/'
+        local update_freq = 6000
+        local sleep_time = 0.5
+        local max_queue_len = 5000
+        local root_folder = '/data/competitor/'
 
         while not ngx.worker.exiting() and ngx.worker.id() == 0 do
             -- check local file to fill comp_file_table
