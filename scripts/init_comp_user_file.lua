@@ -1,3 +1,5 @@
+local last_folder_name = ''
+
 local function check_folder(root_folder)
     local lfs = require 'lfs'
     local folder_counter = 0
@@ -14,13 +16,14 @@ local function check_folder(root_folder)
     end
     for folder in lfs.dir(root_folder) do
         local n = tonumber(folder)
-        if n then
+        if n and folder ~= last_folder_name then
             file_table = {}
             for file in lfs.dir(root_folder .. '/' .. n) do
                 if string.find(file, '[A-Z]') == 1 then
                     file_table[file] = io.open(root_folder .. '/' .. n .. '/' .. file, "r")
                 end
             end
+            last_folder_name = folder
         end
     end
     return file_table
