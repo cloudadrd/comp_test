@@ -8,7 +8,8 @@
   return: 
     {
         "errmsg": "ok",
-        "user_id": "1018acad7dabd3b8"
+        "gaid": "0000000-000abd-0abdabdab-0abdabd"
+        "aid": "1018acad7dabd3b8"
         "pkg": "com.bitmango.go.lollipopmatch3"
         "method": "com1"
     }
@@ -80,25 +81,26 @@ if not line then
     exit_err("country not exist " .. req.country)
 end
 
--- format: user_id /t pkg_name /t method
+-- format: gaid \t aid \t pkg_name \t method
 local text = {}
 for w in string.gmatch(line, "%S+") do
     table.insert(text,w)
 end
 
-if not text[1] or not text[2] or text[1] == '' or text[2] == '' then
+if not text[1] or not text[2] or not text[3] or text[1] == '' or text[2] == '' or text[3] == '' then
     exit_err("wrong data size")
 end
 
 local method = 'com0'
-if text[3] and text[3] ~= '' then
-    method = text[3]
+if text[4] and text[4] ~= '' then
+    method = text[4]
 end
 
 local resp = {
     errmsg = 'ok',
-    user_id = text[1],
-    pkg= text[2],
+    gaid = text[1],
+    aid = text[2],
+    pkg= text[3],
     method= method
 }
 
